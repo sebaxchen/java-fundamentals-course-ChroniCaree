@@ -15,16 +15,16 @@ import { syntaxHighlighting, HighlightStyle } from '@codemirror/language';
 import { tags } from '@lezer/highlight';
 
 @Component({
-  selector: 'app-category-list',
+  selector: 'app-resource-1',
   imports: [
     TranslatePipe,
     FormsModule,
     Codemirror6Component
   ],
-  templateUrl: './category-list.html',
-  styleUrl: './category-list.css'
+  templateUrl: './resource-1.html',
+  styleUrl: './resource-1.css'
 })
-export class CategoryList {
+export class Resource1 {
   code: string = '';
   result: string = 'Escribe código en el editor para ver los resultados aquí...';
   videoUrl: SafeResourceUrl;
@@ -116,7 +116,8 @@ console.log(saludar("Mundo"));
   ];
 
   constructor(private sanitizer: DomSanitizer) {
-    const videoId = 'dQw4w9WgXcQ';
+    // URL del video de YouTube (puedes cambiarla)
+    const videoId = 'dQw4w9WgXcQ'; // Reemplaza con el ID de tu video
     const url = `https://www.youtube.com/embed/${videoId}`;
     this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
@@ -128,6 +129,7 @@ console.log(saludar("Mundo"));
     }
 
     try {
+      // Ejecutar código JavaScript básico
       const output: string[] = [];
       const originalLog = console.log;
       const originalError = console.error;
@@ -144,8 +146,10 @@ console.log(saludar("Mundo"));
         ).join(' '));
       };
 
+      // Ejecutar el código
       eval(this.code);
       
+      // Restaurar console.log y console.error
       console.log = originalLog;
       console.error = originalError;
       

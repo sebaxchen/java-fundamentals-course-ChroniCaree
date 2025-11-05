@@ -15,16 +15,16 @@ import { syntaxHighlighting, HighlightStyle } from '@codemirror/language';
 import { tags } from '@lezer/highlight';
 
 @Component({
-  selector: 'app-about',
+  selector: 'app-resource-4',
   imports: [
     TranslatePipe,
     FormsModule,
     Codemirror6Component
   ],
-  templateUrl: './about.html',
-  styleUrl: './about.css'
+  templateUrl: './resource-4.html',
+  styleUrl: './resource-4.css'
 })
-export class About {
+export class Resource4 {
   code: string = '';
   result: string = 'Escribe código en el editor para ver los resultados aquí...';
   videoUrl: SafeResourceUrl;
