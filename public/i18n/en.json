@@ -3,7 +3,8 @@
     "home": "Resource 1",
     "about": "Resource 2",
     "courses": "Resource 3",
-    "categories": "Resource 4"
+    "categories": "Resource 4",
+    "complete": "Course Complete"
   },
   "about": {
     "title": "About us",

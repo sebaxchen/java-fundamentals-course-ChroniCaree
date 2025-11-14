@@ -28,7 +28,6 @@ export class Resource3 {
   code: string = '';
   result: string = 'Escribe código en el editor para ver los resultados aquí...';
   videoUrl: SafeResourceUrl;
-  transcription: string = 'Aquí aparecerá la transcripción del video. Puedes agregar el texto completo de lo que se dice en el video para que los usuarios puedan leerlo mientras ven el contenido.';
   exampleCode: string = `// Ejemplo de código JavaScript
 function saludar(nombre) {
   return "¡Hola, " + nombre + "!";
@@ -36,6 +35,104 @@ function saludar(nombre) {
 
 console.log(saludar("Mundo"));
 // Resultado: ¡Hola, Mundo!`;
+
+  readonly exercises = [
+    {
+      title: 'Ejercicio 1',
+      code: `import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("¿Cómo te llamas? ");
+        String nombre = scanner.nextLine();
+
+        System.out.println("Hola " + nombre + ", bienvenido al mundo de Java.");
+
+        scanner.close();
+    }
+}`
+    },
+    {
+      title: 'Ejercicio 2',
+      code: `import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("¿Cómo te llamas? ");
+        String nombre = scanner.nextLine();
+
+        System.out.print("¿Cuántos años tienes? ");
+        int edad = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Hola " + nombre + ", tienes " + edad + " años.");
+
+        scanner.close();
+    }
+}`
+    },
+    {
+      title: 'Ejercicio 3',
+      code: `import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int[] notas = new int[3];
+        int suma = 0;
+
+        for (int i = 0; i < notas.length; i++) {
+            System.out.print("Ingresa la nota " + (i + 1) + ": ");
+            notas[i] = scanner.nextInt();
+            suma += notas[i];
+        }
+
+        double promedio = suma / (double) notas.length;
+        System.out.println("Tu promedio es: " + promedio);
+
+        if (promedio >= 11) {
+            System.out.println("¡Aprobaste, buen trabajo!");
+        } else {
+            System.out.println("No te rindas, puedes mejorar.");
+        }
+
+        scanner.close();
+    }
+}`
+    },
+    {
+      title: 'Ejercicio 4',
+      code: `import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String[] juegos = new String[3];
+
+        for (int i = 0; i < juegos.length; i++) {
+            System.out.print("Escribe tu juego favorito #" + (i + 1) + ": ");
+            juegos[i] = scanner.nextLine();
+        }
+
+        System.out.println("Tus juegos favoritos son:");
+        for (int i = 0; i < juegos.length; i++) {
+            System.out.println("- " + juegos[i]);
+        }
+
+        scanner.close();
+    }
+}`
+    }
+  ];
+
+  readonly leftExercises = this.exercises.slice(0, 2);
+  readonly rightExercises = this.exercises.slice(2);
 
   extensions: Extension[] = [
     lineNumbers(),

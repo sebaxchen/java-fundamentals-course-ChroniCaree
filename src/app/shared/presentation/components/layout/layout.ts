@@ -38,7 +38,8 @@ export class Layout implements OnInit, OnDestroy {
     {link: '/resource-1', label: 'option.home'},
     {link: '/resource-2', label: 'option.about'},
     {link: '/resource-3', label: 'option.courses'},
-    {link: '/resource-4', label: 'option.categories'}
+    {link: '/resource-4', label: 'option.categories'},
+    {link: '/course-complete', label: 'option.complete'}
   ];
 
   constructor(
