@@ -160,6 +160,87 @@ body.dark-mode .sidebar-footer {
   border-top: 1px solid #333;
 }
 
+.replit-link-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  transition: background-color 0.3s ease;
+}
+
+body.dark-mode .replit-link-section {
+  background: #2a2a2a;
+}
+
+.replit-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.65rem 0.85rem;
+  background: #1976d2;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(25, 118, 210, 0.25);
+}
+
+.replit-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(25, 118, 210, 0.35);
+  background: #1565c0;
+}
+
+.replit-link:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(25, 118, 210, 0.25);
+  background: #0d47a1;
+}
+
+body.dark-mode .replit-link {
+  background: #64b5f6;
+  color: #0d1b2a;
+  box-shadow: 0 2px 4px rgba(100, 181, 246, 0.35);
+}
+
+body.dark-mode .replit-link:hover {
+  background: #42a5f5;
+  box-shadow: 0 4px 8px rgba(100, 181, 246, 0.45);
+}
+
+body.dark-mode .replit-link:active {
+  background: #1e88e5;
+}
+
+.replit-link-text {
+  flex: 1;
+  line-height: 1.3;
+}
+
+.replit-link-icon {
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.replit-link-hint {
+  margin: 0;
+  font-size: 0.7rem;
+  color: #666;
+  line-height: 1.4;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .replit-link-hint {
+  color: #a0a0a0;
+}
+
 .footer-controls {
   display: flex;
   align-items: center;

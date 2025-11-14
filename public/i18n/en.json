@@ -4,6 +4,7 @@
     "about": "Resource 2",
     "courses": "Resource 3",
     "categories": "Resource 4",
+    "resource5": "Resource 5",
     "complete": "Course Complete"
   },
   "about": {
@@ -23,6 +24,46 @@
     "rights": "All rights reserved",
     "powered-by": "Powered by",
     "and": "and"
+  },
+  "sidebar": {
+    "nextResourceIn": "Next resource in:",
+    "allResourcesAvailable": "All resources available",
+    "continueToNext": "Continue to next resource",
+    "hello": "Hello",
+    "appTitle": "ACME Learning Center",
+    "replit": {
+      "link": "Create account on Replit",
+      "hint": "Or use our integrated editor"
+    }
+  },
+  "resources": {
+    "resource1": {
+      "title": "Introduction to Java and programming, basic syntax: variables, data types."
+    },
+    "resource2": {
+      "title": "Operators and control structures, methods, functions and parameters."
+    },
+    "resource3": {
+      "title": "Input/output with Scanner, simple arrays or strings."
+    },
+    "resource4": {
+      "title": "Introduction to OOP (classes, objects, constructors), basic principles: encapsulation, instantiation."
+    },
+    "resource5": {
+      "title": "Mini-project and best practices"
+    },
+    "watchOnYouTube": "Watch on YouTube",
+    "exercises": "Exercises",
+    "nextExercise": "Next exercise",
+    "codeEditor": "Code Editor",
+    "exercise": "Exercise",
+    "exercise1": "Exercise 1",
+    "exercise2": "Exercise 2",
+    "exercise3": "Exercise 3",
+    "exercise4": "Exercise 4",
+    "codePlaceholder": "Write code in the editor to see results here...",
+    "codeExecutedSuccessfully": "✓ Code executed successfully (no output)",
+    "error": "✗ Error"
   },
   "register": {
     "contentTitle": "Learn with Academic",

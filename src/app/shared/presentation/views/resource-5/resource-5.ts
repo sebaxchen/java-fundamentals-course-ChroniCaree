@@ -19,17 +19,17 @@ import { AnimationItem } from 'lottie-web';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-resource-2',
+  selector: 'app-resource-5',
   imports: [
     NgIf,
     TranslatePipe,
     FormsModule,
     Codemirror6Component
   ],
-  templateUrl: './resource-2.html',
-  styleUrl: './resource-2.css'
+  templateUrl: './resource-5.html',
+  styleUrl: './resource-5.css'
 })
-export class Resource2 implements OnInit, AfterViewInit, OnDestroy {
+export class Resource5 implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('lottieContainer', { static: false }) lottieContainer!: ElementRef;
   code: string = '';
   result: string = '';
@@ -43,60 +43,16 @@ function saludar(nombre) {
 
 console.log(saludar("Mundo"));
 // Resultado: ¡Hola, Mundo!`;
-  readonly videoId = 'dQw4w9WgXcQ';
+  readonly videoId = 'WxFKylEuC4M';
   readonly videoLink = `https://youtu.be/${this.videoId}`;
 
   readonly exercises = [
     {
       title: 'resources.exercise1',
-      code: `public class Main {
+      code: `// Ejemplo de ejercicio
+public class Main {
     public static void main(String[] args) {
-        for (int i = 1; i <= 5; i++) {
-            System.out.println("Número: " + i);
-        }
-    }
-}`
-    },
-    {
-      title: 'resources.exercise2',
-      code: `public class Main {
-    public static void main(String[] args) {
-        int numero = 8;
-
-        if (numero % 2 == 0) {
-            System.out.println("Es par");
-        } else {
-            System.out.println("Es impar");
-        }
-    }
-}`
-    },
-    {
-      title: 'resources.exercise3',
-      code: `public class Main {
-    public static void main(String[] args) {
-        int suma = 0;
-
-        for (int i = 1; i <= 10; i++) {
-            suma += i;
-        }
-
-        System.out.println("La suma de 1 a 10 es: " + suma);
-    }
-}`
-    },
-    {
-      title: 'resources.exercise4',
-      code: `public class Main {
-    public static void main(String[] args) {
-        int contador = 5;
-
-        while (contador > 0) {
-            System.out.println("Cuenta regresiva: " + contador);
-            contador--;
-        }
-
-        System.out.println("¡Despegue!");
+        System.out.println("Hello World");
     }
 }`
     }
@@ -298,3 +254,4 @@ console.log(saludar("Mundo"));
     this.onCodeChange();
   }
 }
+

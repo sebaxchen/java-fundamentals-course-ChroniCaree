@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { NgIf } from '@angular/common';
-import { TranslatePipe } from "@ngx-translate/core";
+import { TranslatePipe, TranslateService } from "@ngx-translate/core";
 import { FormsModule } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Codemirror6Component } from '../../components/codemirror6/codemirror6';
@@ -16,6 +16,7 @@ import { syntaxHighlighting, HighlightStyle } from '@codemirror/language';
 import { tags } from '@lezer/highlight';
 import lottie from 'lottie-web';
 import { AnimationItem } from 'lottie-web';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-resource-1',
@@ -31,9 +32,10 @@ import { AnimationItem } from 'lottie-web';
 export class Resource1 implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('lottieContainer', { static: false }) lottieContainer!: ElementRef;
   code: string = '';
-  result: string = 'Escribe código en el editor para ver los resultados aquí...';
+  result: string = '';
   videoUrl: SafeResourceUrl;
   private animationItem: AnimationItem | null = null;
+  private langChangeSubscription?: Subscription;
   exampleCode: string = `// Ejemplo de código JavaScript
 function saludar(nombre) {
   return "¡Hola, " + nombre + "!";
@@ -46,7 +48,7 @@ console.log(saludar("Mundo"));
 
   readonly exercises = [
     {
-      title: 'Ejercicio 1',
+      title: 'resources.exercise1',
       code: `import java.util.Scanner;
 
 public class Main {
@@ -62,7 +64,7 @@ public class Main {
 }`
     },
     {
-      title: 'Ejercicio 2',
+      title: 'resources.exercise2',
       code: `public class Main {
     public static void main(String[] args) {
         String lenguaje = "Java";
@@ -73,7 +75,7 @@ public class Main {
 }`
     },
     {
-      title: 'Ejercicio 3',
+      title: 'resources.exercise3',
       code: `public class Main {
     public static void main(String[] args) {
         double precio = 19.99;
@@ -85,7 +87,7 @@ public class Main {
 }`
     },
     {
-      title: 'Ejercicio 4',
+      title: 'resources.exercise4',
       code: `import java.util.Scanner;
 
 public class Main {
@@ -185,13 +187,29 @@ public class Main {
     })
   ];
 
-  constructor(private sanitizer: DomSanitizer) {
+  constructor(
+    private sanitizer: DomSanitizer,
+    private translate: TranslateService
+  ) {
     const url = `https://www.youtube.com/embed/${this.videoId}`;
     this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    this.updateResultMessage();
   }
 
   ngOnInit(): void {
     // La animación se carga en ngAfterViewInit
+    this.updateResultMessage();
+    // Suscribirse a cambios de idioma
+    this.langChangeSubscription = this.translate.onLangChange.subscribe(() => {
+      this.updateResultMessage();
+      if (!this.code || this.code.trim() === '') {
+        this.result = this.translate.instant('resources.codePlaceholder');
+      }
+    });
+  }
+
+  private updateResultMessage() {
+    this.result = this.translate.instant('resources.codePlaceholder');
   }
 
   ngAfterViewInit(): void {
@@ -225,6 +243,9 @@ public class Main {
   }
 
   ngOnDestroy(): void {
+    if (this.langChangeSubscription) {
+      this.langChangeSubscription.unsubscribe();
+    }
     if (this.animationItem) {
       this.animationItem.destroy();
     }
@@ -240,7 +261,7 @@ public class Main {
 
   onCodeChange() {
     if (!this.code || this.code.trim() === '') {
-      this.result = 'Escribe código en el editor para ver los resultados aquí...';
+      this.result = this.translate.instant('resources.codePlaceholder');
       return;
     }
 
@@ -269,9 +290,11 @@ public class Main {
       console.log = originalLog;
       console.error = originalError;
       
-      this.result = output.length > 0 ? output.join('\n') : '✓ Código ejecutado correctamente (sin salida)';
+      const successMessage = this.translate.instant('resources.codeExecutedSuccessfully');
+      this.result = output.length > 0 ? output.join('\n') : successMessage;
     } catch (error: any) {
-      this.result = `✗ Error: ${error.message}`;
+      const errorLabel = this.translate.instant('resources.error');
+      this.result = `${errorLabel}: ${error.message}`;
     }
   }
 

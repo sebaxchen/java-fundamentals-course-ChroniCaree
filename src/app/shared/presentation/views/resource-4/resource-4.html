@@ -1,7 +1,7 @@
 <div class="resource-container">
   <!-- Columna izquierda: Video -->
   <div class="column video-column">
-    <h2 class="section-title">Introducción a la POO (clases, objetos, constructores), principios básicos: encapsulación, instanciación.</h2>
+    <h2 class="section-title">{{ 'resources.resource4.title' | translate }}</h2>
     <div class="video-wrapper">
       <iframe 
         [src]="videoUrl" 
@@ -16,20 +16,20 @@
       [href]="videoLink"
       target="_blank"
       rel="noopener noreferrer">
-      Ver en YouTube
+      {{ 'resources.watchOnYouTube' | translate }}
     </a>
     <div class="exercise-section">
-      <h2 class="section-title">Ejercicios</h2>
+      <h2 class="section-title">{{ 'resources.exercises' | translate }}</h2>
       <div class="exercise-list">
         <div class="exercise-card" *ngIf="currentExercise as exercise">
           <div class="exercise-sidebar">
             <div class="exercise-header">
-              <h3 class="exercise-title">{{ exercise.title }}</h3>
+              <h3 class="exercise-title">{{ exercise.title | translate }}</h3>
               <span class="exercise-counter">{{ currentExerciseIndex + 1 }} / {{ exercises.length }}</span>
             </div>
             <div class="exercise-actions">
               <button type="button" class="exercise-button" (click)="showNextExercise()">
-                Siguiente ejercicio
+                {{ 'resources.nextExercise' | translate }}
               </button>
             </div>
           </div>
@@ -42,7 +42,7 @@
   <!-- Columna derecha: Editor -->
   <div class="column editor-column">
     <div class="editor-section">
-      <h2 class="section-title">Editor de Código</h2>
+      <h2 class="section-title">{{ 'resources.codeEditor' | translate }}</h2>
       <div class="editor-wrapper">
         <div class="code-editor-container">
           <app-codemirror6

@@ -2,8 +2,9 @@ import { Component, signal, computed, OnInit, OnDestroy, Renderer2, Inject } fro
 import { DOCUMENT } from '@angular/common';
 import {MatButton} from '@angular/material/button';
 import {Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
-import {TranslatePipe} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {LanguageSwitcher} from '../language-switcher/language-switcher';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-layout',
@@ -30,6 +31,7 @@ export class Layout implements OnInit, OnDestroy {
   protected readonly allResourcesUnlocked = computed(() => this.unlockedCount() >= this.options.length);
   private storageListener?: (event: StorageEvent) => void;
   private timerIntervalId?: number;
+  private langChangeSubscription?: Subscription;
   private readonly unlockIntervalMs = 10 * 60 * 1000;
   private readonly nextUnlockAt = signal<number | null>(null);
   private readonly enableProgressTimer = false;
@@ -39,13 +41,15 @@ export class Layout implements OnInit, OnDestroy {
     {link: '/resource-2', label: 'option.about'},
     {link: '/resource-3', label: 'option.courses'},
     {link: '/resource-4', label: 'option.categories'},
+    {link: '/resource-5', label: 'option.resource5'},
     {link: '/course-complete', label: 'option.complete'}
   ];
 
   constructor(
     @Inject(DOCUMENT) private doc: Document,
     private renderer: Renderer2,
-    private router: Router
+    private router: Router,
+    private translate: TranslateService
   ) {
     this.document = doc;
     // Cargar el tema guardado o usar el predeterminado
@@ -55,6 +59,11 @@ export class Layout implements OnInit, OnDestroy {
     }
 
     this.updateSidebarTitle();
+    
+    // Suscribirse a cambios de idioma para actualizar el título
+    this.langChangeSubscription = this.translate.onLangChange.subscribe(() => {
+      this.updateSidebarTitle();
+    });
 
     if (typeof window !== 'undefined') {
       this.storageListener = (event: StorageEvent) => {
@@ -75,6 +84,9 @@ export class Layout implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.stopTimer();
+    if (this.langChangeSubscription) {
+      this.langChangeSubscription.unsubscribe();
+    }
     if (typeof window !== 'undefined' && this.storageListener) {
       window.removeEventListener('storage', this.storageListener);
     }
@@ -94,9 +106,11 @@ export class Layout implements OnInit, OnDestroy {
     const name = localStorage.getItem('userName');
 
     if (name && name.trim().length > 0) {
-      this.sidebarTitle.set(`Hola ${name.trim()}`);
+      const hello = this.translate.instant('sidebar.hello');
+      this.sidebarTitle.set(`${hello} ${name.trim()}`);
     } else {
-      this.sidebarTitle.set('ACME Learning Center');
+      const title = this.translate.instant('sidebar.appTitle');
+      this.sidebarTitle.set(title);
     }
   }
 

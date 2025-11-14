@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { NgIf } from '@angular/common';
-import { TranslatePipe } from "@ngx-translate/core";
+import { TranslatePipe, TranslateService } from "@ngx-translate/core";
 import { FormsModule } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Codemirror6Component } from '../../components/codemirror6/codemirror6';
@@ -16,6 +16,7 @@ import { syntaxHighlighting, HighlightStyle } from '@codemirror/language';
 import { tags } from '@lezer/highlight';
 import lottie from 'lottie-web';
 import { AnimationItem } from 'lottie-web';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-resource-4',
@@ -31,9 +32,10 @@ import { AnimationItem } from 'lottie-web';
 export class Resource4 implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('lottieContainer', { static: false }) lottieContainer!: ElementRef;
   code: string = '';
-  result: string = 'Escribe código en el editor para ver los resultados aquí...';
+  result: string = '';
   videoUrl: SafeResourceUrl;
   private animationItem: AnimationItem | null = null;
+  private langChangeSubscription?: Subscription;
   exampleCode: string = `// Ejemplo de código JavaScript
 function saludar(nombre) {
   return "¡Hola, " + nombre + "!";
@@ -46,59 +48,165 @@ console.log(saludar("Mundo"));
 
   readonly exercises = [
     {
-      title: 'Ejercicio 1',
-      code: `import java.util.Arrays;
+      title: 'resources.exercise1',
+      code: `// CREACIÓN DE UNA CLASE
+
+public class Student {
+
+  String name;
+
+  int age; 
+
+
+
+  // CREACIÓN DEL CONSTRUCTOR
+
+  public Student(String name, int age){
+
+    this.name = name;
+
+    this.age = age;
+
+  }
+
+
+
+
+
+  // CREACIÓN DE ENCAPSULACIÓN 
+
+  
+
+  // Getter
+
+  public String getName(){
+
+    return name;
+
+  }
+
+
+
+  public int getAge(){
+
+    return age;
+
+  }
+
+
+
+  //Setter
+
+  public void setAge(int age){
+
+    if (age >= 0 && age <= 120){
+
+      this.age= age;
+
+    }
+
+  }
+
+  
+
+}`
+    },
+    {
+      title: 'resources.exercise2',
+      code: `/** CREANDO OBJETOS
 
 public class Main {
-    public static void main(String[] args) {
-        int[] numeros = {3, 1, 4, 1, 5};
-        Arrays.sort(numeros);
-        System.out.println(Arrays.toString(numeros));
-    }
-}`
-    },
-    {
-      title: 'Ejercicio 2',
-      code: `public class Main {
-    public static void main(String[] args) {
-        String frase = "Programar en Java";
-        System.out.println(frase.toUpperCase());
-        System.out.println("Longitud: " + frase.length());
-    }
-}`
-    },
-    {
-      title: 'Ejercicio 3',
-      code: `public class Main {
-    public static void main(String[] args) {
-        int[][] matriz = {
-            {1, 2, 3},
-            {4, 5, 6}
-        };
 
-        for (int[] fila : matriz) {
-            for (int valor : fila) {
-                System.out.print(valor + " ");
-            }
-            System.out.println();
+    public static void main(String[] args) {
+
+        Student s1 = new Student();
+
+        s1.name = "Ana";
+
+        s1.age = 15;
+
+
+
+        Student s2 = new Student();
+
+        s2.name = "Luis";
+
+        s2.age = 16;
+
+
+
+        System.out.println(s1.name + " tiene " + s1.age + " años.");
+
+        System.out.println(s2.name + " tiene " + s2.age + " años.");
+
+    }
+
+}
+
+*/
+
+
+
+
+
+/** PARA EL CONSTRUCTOR
+
+    public class Main {
+
+        public static void main(String[] args) {
+
+            Student s1 = new Student("Ana", 15);
+
+            Student s2 = new Student("Luis", 16);
+
+
+
+            System.out.println(s1.name + " tiene " + s1.age + " años.");
+
+            System.out.println(s2.name + " tiene " + s2.age + " años.");
+
         }
+
     }
-}`
+
+*/`
     },
     {
-      title: 'Ejercicio 4',
-      code: `import java.util.ArrayList;
-import java.util.List;
+      title: 'resources.exercise3',
+      code: `public class Main {
 
-public class Main {
-    public static void main(String[] args) {
-        List<String> tareas = new ArrayList<>();
-        tareas.add("Estudiar Java");
-        tareas.add("Practicar ejercicios");
-        tareas.add("Descansar");
+  public static void main(String[] args) {
 
-        tareas.forEach(tarea -> System.out.println("- " + tarea));
-    }
+    
+
+    Student s1 = new Student("Ana", 17);
+
+    System.out.println(s1.getName() + " tiene " + s1.getAge() + " años. ");
+
+
+
+    s1.setAge(19);
+
+    System.out.println("Despues de actualizar, " + s1.getName() + " tiene " + s1.getAge() + " años. ");
+
+
+
+    s1.setAge(25);
+
+    System.out.println("Edad final de " + s1.getName() + ": " + s1.getAge());
+
+    
+
+  
+
+    
+
+
+
+    
+
+  }
+
 }`
     }
   ];
@@ -186,13 +294,29 @@ public class Main {
     })
   ];
 
-  constructor(private sanitizer: DomSanitizer) {
+  constructor(
+    private sanitizer: DomSanitizer,
+    private translate: TranslateService
+  ) {
     const url = `https://www.youtube.com/embed/${this.videoId}`;
     this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    this.updateResultMessage();
   }
 
   ngOnInit(): void {
     // La animación se carga en ngAfterViewInit
+    this.updateResultMessage();
+    // Suscribirse a cambios de idioma
+    this.langChangeSubscription = this.translate.onLangChange.subscribe(() => {
+      this.updateResultMessage();
+      if (!this.code || this.code.trim() === '') {
+        this.result = this.translate.instant('resources.codePlaceholder');
+      }
+    });
+  }
+
+  private updateResultMessage() {
+    this.result = this.translate.instant('resources.codePlaceholder');
   }
 
   ngAfterViewInit(): void {
@@ -226,6 +350,9 @@ public class Main {
   }
 
   ngOnDestroy(): void {
+    if (this.langChangeSubscription) {
+      this.langChangeSubscription.unsubscribe();
+    }
     if (this.animationItem) {
       this.animationItem.destroy();
     }
@@ -241,7 +368,7 @@ public class Main {
 
   onCodeChange() {
     if (!this.code || this.code.trim() === '') {
-      this.result = 'Escribe código en el editor para ver los resultados aquí...';
+      this.result = this.translate.instant('resources.codePlaceholder');
       return;
     }
 
@@ -267,9 +394,11 @@ public class Main {
       console.log = originalLog;
       console.error = originalError;
       
-      this.result = output.length > 0 ? output.join('\n') : '✓ Código ejecutado correctamente (sin salida)';
+      const successMessage = this.translate.instant('resources.codeExecutedSuccessfully');
+      this.result = output.length > 0 ? output.join('\n') : successMessage;
     } catch (error: any) {
-      this.result = `✗ Error: ${error.message}`;
+      const errorLabel = this.translate.instant('resources.error');
+      this.result = `${errorLabel}: ${error.message}`;
     }
   }
 

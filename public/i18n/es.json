@@ -4,6 +4,7 @@
     "about": "Resource 2",
     "courses": "Resource 3",
     "categories": "Resource 4",
+    "resource5": "Resource 5",
     "complete": "Curso completado"
   },
   "about": {
@@ -23,6 +24,46 @@
     "rights": "Todos los derechos reservados",
     "powered-by": "Desarrollado con",
     "and": "y"
+  },
+  "sidebar": {
+    "nextResourceIn": "Siguiente recurso en:",
+    "allResourcesAvailable": "Todos los recursos disponibles",
+    "continueToNext": "Continuar al siguiente recurso",
+    "hello": "Hola",
+    "appTitle": "ACME Learning Center",
+    "replit": {
+      "link": "Crea tu cuenta en Replit",
+      "hint": "O puedes usar nuestro editor"
+    }
+  },
+  "resources": {
+    "resource1": {
+      "title": "Introducción a Java y la programación, sintaxis básica: variables, tipos de datos."
+    },
+    "resource2": {
+      "title": "Operadores y estructuras de control, métodos, funciones y parámetros."
+    },
+    "resource3": {
+      "title": "Entrada/salida con Scanner, Arreglos simples o cadenas."
+    },
+    "resource4": {
+      "title": "Introducción a la POO (clases, objetos, constructores), principios básicos: encapsulación, instanciación."
+    },
+    "resource5": {
+      "title": "Miniproyecto y buenas prácticas"
+    },
+    "watchOnYouTube": "Ver en YouTube",
+    "exercises": "Ejercicios",
+    "nextExercise": "Siguiente ejercicio",
+    "codeEditor": "Editor de Código",
+    "exercise": "Ejercicio",
+    "exercise1": "Ejercicio 1",
+    "exercise2": "Ejercicio 2",
+    "exercise3": "Ejercicio 3",
+    "exercise4": "Ejercicio 4",
+    "codePlaceholder": "Escribe código en el editor para ver los resultados aquí...",
+    "codeExecutedSuccessfully": "✓ Código ejecutado correctamente (sin salida)",
+    "error": "✗ Error"
   },
   "register": {
     "contentTitle": "Aprende con Academic",

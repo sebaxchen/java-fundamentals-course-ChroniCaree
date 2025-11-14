@@ -241,8 +241,8 @@ body.dark-mode .exercise-counter {
 
 .exercise-code {
   margin: 0;
-  white-space: pre-wrap;
-  word-break: break-word;
+  white-space: pre;
+  word-break: normal;
   font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
   font-size: 0.72rem;
   line-height: 1.45;
@@ -254,29 +254,49 @@ body.dark-mode .exercise-counter {
   flex: 1;
   max-height: none;
   scrollbar-width: thin;
+  scrollbar-color: rgba(25, 118, 210, 0.6) rgba(25, 118, 210, 0.1);
 }
 
 .exercise-code::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 
 .exercise-code::-webkit-scrollbar-thumb {
-  background: rgba(25, 118, 210, 0.4);
+  background: rgba(25, 118, 210, 0.6);
   border-radius: 999px;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+
+.exercise-code::-webkit-scrollbar-thumb:hover {
+  background: rgba(25, 118, 210, 0.8);
+  background-clip: padding-box;
 }
 
 .exercise-code::-webkit-scrollbar-track {
-  background: transparent;
+  background: rgba(25, 118, 210, 0.1);
+  border-radius: 999px;
 }
 
 body.dark-mode .exercise-code {
   color: #e0e0e0;
   background: rgba(100, 181, 246, 0.08);
+  scrollbar-color: rgba(100, 181, 246, 0.7) rgba(100, 181, 246, 0.1);
 }
 
 body.dark-mode .exercise-code::-webkit-scrollbar-thumb {
-  background: rgba(100, 181, 246, 0.6);
+  background: rgba(100, 181, 246, 0.7);
+  background-clip: padding-box;
+}
+
+body.dark-mode .exercise-code::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 181, 246, 0.9);
+  background-clip: padding-box;
+}
+
+body.dark-mode .exercise-code::-webkit-scrollbar-track {
+  background: rgba(100, 181, 246, 0.15);
 }
 
 .exercise-actions {
