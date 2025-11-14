@@ -32,9 +32,9 @@ export class Layout implements OnInit, OnDestroy {
   private storageListener?: (event: StorageEvent) => void;
   private timerIntervalId?: number;
   private langChangeSubscription?: Subscription;
-  private readonly unlockIntervalMs = 10 * 60 * 1000;
+  private readonly unlockIntervalMs = 20 * 1000; // 20 segundos para pruebas
   private readonly nextUnlockAt = signal<number | null>(null);
-  private readonly enableProgressTimer = false;
+  private readonly enableProgressTimer = true;
 
   options = [
     {link: '/resource-1', label: 'option.home'},
