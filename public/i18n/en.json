@@ -7,30 +7,17 @@
     "resource5": "Resource 5",
     "complete": "Course Complete"
   },
-  "about": {
-    "title": "About us",
-    "content": "ACME Learning Center is a Education platform, part of ACME Corporation"
-  },
-  "home": {
-    "title": "Welcome",
-    "content": "Welcome to ACME Learning Center"
-  },
   "page-not-found": {
     "title": "Page not found",
     "content": "The path <strong>{{ invalidPath }}</strong> is not valid",
     "go-home": "Go home"
-  },
-  "footer": {
-    "rights": "All rights reserved",
-    "powered-by": "Powered by",
-    "and": "and"
   },
   "sidebar": {
     "nextResourceIn": "Next resource in:",
     "allResourcesAvailable": "All resources available",
     "continueToNext": "Continue to next resource",
     "hello": "Hello",
-    "appTitle": "ACME Learning Center",
+    "appTitle": "Java Fundamentals Course - ChroniCaree",
     "replit": {
       "link": "Create account on Replit",
       "hint": "Or use our integrated editor"
@@ -67,63 +54,18 @@
     "error": "✗ Error"
   },
   "register": {
-    "contentTitle": "Learn with Academic",
-    "contentDescription": "Manage your learning with Academic. A platform designed to help you master the basics of programming effectively and systematically.",
+    "contentTitle": "Learn with ChroniCaree",
+    "contentDescription": "Manage your learning with ChroniCaree. A platform designed to help you master the basics of Java programming effectively and systematically.",
     "feature1": "Complete fundamentals of programming course: from basic concepts to practical projects.",
     "feature2": "Personalized study plan with reminders and progress tracking.",
     "feature3": "Practical exercises and real projects to reinforce your learning.",
     "feature4": "Focused study mode with time tracking and unlockable achievements.",
     "formTitle": "Create Account",
-    "formSubtitle": "Register on Academic",
+    "formSubtitle": "Register on ChroniCaree",
     "nameLabel": "Your name",
     "nameRequired": "Name is required",
     "nameMinLength": "Name must be at least 2 characters",
     "continue": "Continue"
-  },
-  "categories": {
-    "list-title": "Categories",
-    "id": "ID",
-    "name": "Name",
-    "actions": "Actions",
-    "new": "New Category",
-    "edit": "Edit",
-    "delete": "Delete"
-  },
-  "category": {
-    "new-title": "Create New Category",
-    "edit-title": "Edit Category",
-    "name": "Name",
-    "create": "Create Category",
-    "update": "Update Category",
-    "cancel": "Cancel",
-    "error": {
-      "name-required": "Name is required"
-    }
-  }, "courses": {
-  "list-title": "Courses",
-  "id": "ID",
-  "title": "Title",
-  "description": "Description",
-  "category": "Category",
-  "actions": "Actions",
-  "new": "New Course",
-  "edit": "Edit",
-  "delete": "Delete"
-},
-  "course": {
-    "new-title": "Create New Course",
-    "edit-title": "Edit Course",
-    "title": "Title",
-    "description": "Description",
-    "category": "Category",
-    "create": "Create Course",
-    "update": "Update Course",
-    "cancel": "Cancel",
-    "error": {
-      "title-required": "Title is required",
-      "description-required": "Description is required",
-      "category-required": "Category is required"
-    }
   },
   "courseComplete": {
     "title": "Congratulations!",
@@ -139,7 +81,7 @@
     "message8": "We are proud of your achievement and hope you continue to grow as a programmer. Keep practicing and exploring new challenges!",
     "message9": "Thank you for being part of our learning community.",
     "signature": "Best regards,",
-    "team": "The Academic Team",
+    "team": "The ChroniCaree Team",
     "backToStart": "Back to start"
   }
 }

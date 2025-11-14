@@ -22,7 +22,7 @@ export class PageNotFound implements OnInit{
   }
 
   protected navigateToHome() {
-    this.router.navigate(['home']).then();
+    this.router.navigate(['/resource-1']).then();
   }
 
 

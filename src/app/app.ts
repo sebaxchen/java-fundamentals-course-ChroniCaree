@@ -11,7 +11,7 @@ import { filter } from 'rxjs/operators';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('learning-center');
+  protected readonly title = signal('java-fundamentals-course-ChroniCaree');
   private translate: TranslateService;
   private router = inject(Router);
   protected readonly currentRoute = signal<string>('');

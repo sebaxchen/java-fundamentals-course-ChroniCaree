@@ -7,30 +7,17 @@
     "resource5": "Resource 5",
     "complete": "Curso completado"
   },
-  "about": {
-    "title": "Acerca de nosotros",
-    "content": "ACME Learning Center es una plataforma educativa, parte de ACME Corporation"
-  },
-  "home": {
-    "title": "Bienvenido",
-    "content": "Bienvenido a ACME Learning Center"
-  },
   "page-not-found": {
     "title": "Pàgina no encontrada",
     "content": "La ruta <strong>{{ invalidPath }}</strong> es invàlida",
     "go-home": "Ir al inicio"
-  },
-  "footer": {
-    "rights": "Todos los derechos reservados",
-    "powered-by": "Desarrollado con",
-    "and": "y"
   },
   "sidebar": {
     "nextResourceIn": "Siguiente recurso en:",
     "allResourcesAvailable": "Todos los recursos disponibles",
     "continueToNext": "Continuar al siguiente recurso",
     "hello": "Hola",
-    "appTitle": "ACME Learning Center",
+    "appTitle": "Java Fundamentals Course - ChroniCaree",
     "replit": {
       "link": "Crea tu cuenta en Replit",
       "hint": "O puedes usar nuestro editor"
@@ -67,14 +54,14 @@
     "error": "✗ Error"
   },
   "register": {
-    "contentTitle": "Aprende con Academic",
-    "contentDescription": "Gestiona tu aprendizaje con Academic. Una plataforma diseñada para ayudarte a dominar las bases de la programación de manera efectiva y estructurada.",
+    "contentTitle": "Aprende con ChroniCaree",
+    "contentDescription": "Gestiona tu aprendizaje con ChroniCaree. Una plataforma diseñada para ayudarte a dominar las bases de la programación en Java de manera efectiva y estructurada.",
     "feature1": "Curso completo de fundamentos de programación: desde conceptos básicos hasta proyectos prácticos.",
     "feature2": "Plan de estudio personalizado con recordatorios y seguimiento de progreso.",
     "feature3": "Ejercicios prácticos y proyectos reales para reforzar tu aprendizaje.",
     "feature4": "Modo de estudio enfocado con seguimiento de tiempo y logros desbloqueables.",
     "formTitle": "Crear Cuenta",
-    "formSubtitle": "Regístrate en Academic",
+    "formSubtitle": "Regístrate en ChroniCaree",
     "nameLabel": "Tu nombre",
     "nameRequired": "El nombre es requerido",
     "nameMinLength": "El nombre debe tener al menos 2 caracteres",
@@ -94,7 +81,7 @@
     "message8": "Estamos orgullosos de tu logro y esperamos que sigas creciendo como programador. ¡Sigue practicando y explorando nuevos desafíos!",
     "message9": "Gracias por ser parte de nuestra comunidad de aprendizaje.",
     "signature": "Saludos cordiales,",
-    "team": "El equipo de Academic",
+    "team": "El equipo de ChroniCaree",
     "backToStart": "Volver al inicio"
   }
 }

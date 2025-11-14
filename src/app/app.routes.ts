@@ -9,7 +9,7 @@ const resource5 = () => import('./shared/presentation/views/resource-5/resource-
 const courseComplete = () => import('./shared/presentation/views/course-complete/course-complete').then(m => m.CourseComplete);
 const pageNotFound = () => import('./shared/presentation/views/page-not-found/page-not-found')
   .then(m => m.PageNotFound);
-const baseTitle = 'ACME Learning Center';
+const baseTitle = 'Java Fundamentals Course - ChroniCaree';
 export const routes: Routes = [
   { path: 'register', loadComponent: register, title: `${baseTitle} - Register` },
   { path: 'resource-1', component: Resource1, title: `${baseTitle} - Resource 1` },

@@ -23,7 +23,7 @@ export class Layout implements OnInit, OnDestroy {
   private document: Document;
   
   isDarkMode = signal<boolean>(false);
-  protected readonly sidebarTitle = signal<string>('ACME Learning Center');
+  protected readonly sidebarTitle = signal<string>('Java Fundamentals Course - ChroniCaree');
   protected readonly unlockedCount = signal<number>(1);
   protected readonly timeLeftSeconds = signal<number>(0);
   protected readonly newlyUnlockedIndex = signal<number | null>(null);

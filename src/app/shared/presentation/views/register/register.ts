@@ -31,8 +31,8 @@ export class Register {
       if (name) {
         // Guardar el nombre en localStorage
         localStorage.setItem('userName', name);
-        // Redirigir al home
-        this.router.navigate(['/home']);
+        // Redirigir al primer recurso
+        this.router.navigate(['/resource-1']);
       }
     }
   }
