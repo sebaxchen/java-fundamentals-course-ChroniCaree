@@ -28,7 +28,8 @@
       "title": "Introduction to Java and programming, basic syntax: variables, data types."
     },
     "resource2": {
-      "title": "Operators and control structures, methods, functions and parameters."
+      "title": "Operators and control structures, methods, functions and parameters.",
+      "video": "https://youtu.be/RryyYpLgSpk"
     },
     "resource3": {
       "title": "Input/output with Scanner, simple arrays or strings."

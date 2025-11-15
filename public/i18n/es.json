@@ -28,7 +28,8 @@
       "title": "Introducción a Java y la programación, sintaxis básica: variables, tipos de datos."
     },
     "resource2": {
-      "title": "Operadores y estructuras de control, métodos, funciones y parámetros."
+      "title": "Operadores y estructuras de control, métodos, funciones y parámetros.",
+      "video": "https://youtu.be/RryyYpLgSpk"
     },
     "resource3": {
       "title": "Entrada/salida con Scanner, Arreglos simples o cadenas."

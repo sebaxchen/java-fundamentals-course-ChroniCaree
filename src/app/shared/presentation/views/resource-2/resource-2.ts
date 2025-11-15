@@ -33,7 +33,7 @@ export class Resource2 implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('lottieContainer', { static: false }) lottieContainer!: ElementRef;
   code: string = '';
   result: string = '';
-  videoUrl: SafeResourceUrl;
+  videoUrl!: SafeResourceUrl;
   private animationItem: AnimationItem | null = null;
   private langChangeSubscription?: Subscription;
   exampleCode: string = `// Ejemplo de código JavaScript
@@ -43,8 +43,8 @@ function saludar(nombre) {
 
 console.log(saludar("Mundo"));
 // Resultado: ¡Hola, Mundo!`;
-  readonly videoId = 'dQw4w9WgXcQ';
-  readonly videoLink = `https://youtu.be/${this.videoId}`;
+  videoLink: string = '';
+  private videoId: string = '';
 
   readonly exercises = [
     {
@@ -331,9 +331,44 @@ console.log(saludar("Mundo"));
     private sanitizer: DomSanitizer,
     private translate: TranslateService
   ) {
-    const url = `https://www.youtube.com/embed/${this.videoId}`;
-    this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    this.updateVideoUrl();
     this.updateResultMessage();
+  }
+
+  private extractVideoId(videoUrl: string): string {
+    // Extract video ID from various YouTube URL formats
+    // https://youtu.be/RryyYpLgSpk -> RryyYpLgSpk
+    // https://www.youtube.com/watch?v=RryyYpLgSpk -> RryyYpLgSpk
+    // https://www.youtube.com/embed/RryyYpLgSpk -> RryyYpLgSpk
+    const patterns = [
+      /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([^&\n?#]+)/,
+      /^([a-zA-Z0-9_-]{11})$/ // Direct video ID
+    ];
+    
+    for (const pattern of patterns) {
+      const match = videoUrl.match(pattern);
+      if (match && match[1]) {
+        return match[1];
+      }
+    }
+    
+    return videoUrl; // Fallback: return as-is if no pattern matches
+  }
+
+  private updateVideoUrl(): void {
+    const videoUrl = this.translate.instant('resources.resource2.video');
+    if (videoUrl && videoUrl !== 'resources.resource2.video') {
+      this.videoLink = videoUrl;
+      this.videoId = this.extractVideoId(videoUrl);
+      const embedUrl = `https://www.youtube.com/embed/${this.videoId}`;
+      this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
+    } else {
+      // Fallback if translation is not available
+      this.videoId = 'RryyYpLgSpk';
+      this.videoLink = `https://youtu.be/${this.videoId}`;
+      const embedUrl = `https://www.youtube.com/embed/${this.videoId}`;
+      this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
+    }
   }
 
   ngOnInit(): void {
@@ -341,11 +376,14 @@ console.log(saludar("Mundo"));
     this.updateResultMessage();
     // Suscribirse a cambios de idioma
     this.langChangeSubscription = this.translate.onLangChange.subscribe(() => {
+      this.updateVideoUrl();
       this.updateResultMessage();
       if (!this.code || this.code.trim() === '') {
         this.result = this.translate.instant('resources.codePlaceholder');
       }
     });
+    // Update video URL when translations are ready
+    this.updateVideoUrl();
   }
 
   private updateResultMessage() {
